@@ -1,7 +1,7 @@
 /**
  * @file index
  * @author leuisken <leuisken@foxmail.com>
- * @desc 模块入口文件
+ * @desc just an entry file
  */
 
 'use strict';

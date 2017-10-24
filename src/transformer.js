@@ -8,17 +8,30 @@
 
 let isTHead = false;
 
+/**
+ * transform the thead tag
+ *
+ * @param {Object} node markdown ast of thead
+ * @return {Object} markdown 数据格式化后的 json node
+ */
 function transformTHead(node) {
     const transformedNode = transformer(node);
     isTHead = false;
     return transformedNode;
 }
 
+/**
+ * markdown data to json transformer
+ *
+ * @param {Object} node markdown ast
+ * @return {Object} markdown 数据格式化后的 json node
+ */
 function transformer(node) {
     if (node === null || node === undefined) {
         return;
     }
 
+    // Multiple children
     if (Array.isArray(node)) {
         return node.map(transformer);
     }
@@ -27,12 +40,14 @@ function transformer(node) {
         ? transformer(node.children.slice(1))   // if table, remove the first children as thead
         : transformer(node.children);
 
+    // 快速生成符合格式要求的 json node
     const structure = (type, children = transformedChildren) => ({
         [type]: {
             children
         }
     });
 
+    // transform according to node type
     switch (node.type) {
         case 'root':
             return structure('article');

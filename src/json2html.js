@@ -6,22 +6,31 @@
 
 'use strict';
 
+/**
+ * json to html
+ *
+ * @param {Object} node json 格式的 element 对象
+ * @return {string} 格式化后的 html 模板
+ */
 function json2html(node) {
     if (node === null || node === undefined) {
         return;
     }
 
+    // text node
     if (typeof node === 'string') {
         return node;
     }
 
+    // Multiple children
     if (Array.isArray(node)) {
         return node.map(json2html).reduce((cur, next) => cur + next);
     }
 
     const tagName = Object.keys(node)[0];
-    const attr = transformedAttr(node[tagName].attr);
+    const attr = transformAttr(node[tagName].attr);
 
+    // void element don't have children
     if (isVoidElement(tagName)) {
         return `<${tagName} ${attr}/>`;
     }
@@ -34,13 +43,25 @@ function json2html(node) {
         + `</${tagName}>`;
 }
 
+/**
+ * isVoidElement
+ *
+ * @param {string} tagName 标签名
+ * @return {boolean}
+ */
 function isVoidElement(tagName) {
     return tagName === 'img'
         || tagName === 'hr'
         || tagName === 'br';
 }
 
-function transformedAttr(attr) {
+/**
+ * transformAttr
+ *
+ * @param {Object} attr 属性对象
+ * @return {string} html 所用的属性格式字符串
+ */
+function transformAttr(attr) {
     if (attr === null || attr === undefined) {
         return '';
     }

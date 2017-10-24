@@ -11,6 +11,12 @@ const remark = require('remark');
 
 const transformer = require('./transformer');
 
+/**
+ * markdown to json
+ *
+ * @param {string} markdownData markdown 数据字符串
+ * @return {Object} 包含 yaml 头信息与 markdown 内容的 json 对象
+ */
 function markdown2json(markdownData) {
     // 解析 yaml 头，作为 json 的 meta 字段
     let meta = YMF.loadFront(markdownData);
@@ -22,8 +28,8 @@ function markdown2json(markdownData) {
     delete meta.__content;
 
     return {
-        meta: meta,
-        content: content
+        meta: meta,         // yaml 头信息
+        content: content    // 格式化成 json 格式的 markdown 数据
     };
 }
 
