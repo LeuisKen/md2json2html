@@ -9,8 +9,8 @@
 /**
  * json to html
  *
- * @param {Object} node json 格式的 element 对象
- * @return {string} 格式化后的 html 模板
+ * @param {Object} node markdown-json node
+ * @return {string} html format string
  */
 function json2html(node) {
     if (node === null || node === undefined) {

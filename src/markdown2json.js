@@ -14,8 +14,8 @@ const transformer = require('./transformer');
 /**
  * markdown to json
  *
- * @param {string} markdownData markdown 数据字符串
- * @return {Object} 包含 yaml 头信息与 markdown 内容的 json 对象
+ * @param {string} markdownData markdown data string
+ * @return {Object} json object that contents yaml format meta and markdown-json node
  */
 function markdown2json(markdownData) {
     // 解析 yaml 头，作为 json 的 meta 字段
