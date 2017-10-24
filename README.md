@@ -1,5 +1,8 @@
 # md2json2html
 
+[![NPM version](https://img.shields.io/npm/v/md2json2html.svg?style=flat-square)](https://www.npmjs.org/package/md2json2html)
+[![License](https://img.shields.io/github/license/LeuisKen/md2json2html.svg?style=flat-square)](https://npmjs.org/package/md2json2html)
+
 A npm package that transform markdown data to json and html.
 
 ## Usage:
