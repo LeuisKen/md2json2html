@@ -13,7 +13,7 @@
  * @return {string} html format string
  */
 function json2html(node) {
-    if (node === null || node === undefined) {
+    if (node == null) {
         return;
     }
 
@@ -62,7 +62,7 @@ function isVoidElement(tagName) {
  * @return {string} html 所用的属性格式字符串
  */
 function transformAttr(attr) {
-    if (attr === null || attr === undefined) {
+    if (attr == null) {
         return '';
     }
 

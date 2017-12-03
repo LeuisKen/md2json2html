@@ -27,7 +27,7 @@ function transformTHead(node) {
  * @return {Object} markdown 数据格式化后的 json node
  */
 function transformer(node) {
-    if (node === null || node === undefined) {
+    if (node == null) {
         return;
     }
 
