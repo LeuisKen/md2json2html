@@ -24,7 +24,7 @@ function json2html(node) {
 
     // Multiple children
     if (Array.isArray(node)) {
-        return node.map(json2html).reduce((cur, next) => cur + next);
+        return node.map(json2html).join('');
     }
 
     const tagName = Object.keys(node)[0];
