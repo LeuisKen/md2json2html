@@ -43,13 +43,13 @@ function toHTML(node) {
 
     // void element don't have children
     if (isVoidElement(tagName)) {
-        return `<${tagName} ${attr}/>`;
+        return `<${tagName}${attr}/>`;
     }
 
     const transformedChildren = toHTML(node[tagName].children);
 
     return ''
-        + `<${tagName} ${attr}>`
+        + `<${tagName}${attr}>`
             + `${transformedChildren}`
         + `</${tagName}>`;
 }
