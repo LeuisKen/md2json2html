@@ -13,6 +13,17 @@
  * @return {string} html format string
  */
 function json2html(node) {
+    return toHTML(node);
+}
+
+/**
+ * to html
+ *
+ * @desc 用于递归调用遍历 node 树
+ * @param {Object} node markdown-json node
+ * @return {string} html format string
+ */
+function toHTML(node) {
     if (node == null) {
         return;
     }
@@ -24,7 +35,7 @@ function json2html(node) {
 
     // Multiple children
     if (Array.isArray(node)) {
-        return node.map(json2html).join('');
+        return node.map(toHTML).join('');
     }
 
     const tagName = Object.keys(node)[0];
@@ -35,7 +46,7 @@ function json2html(node) {
         return `<${tagName} ${attr}/>`;
     }
 
-    const transformedChildren = json2html(node[tagName].children);
+    const transformedChildren = toHTML(node[tagName].children);
 
     return ''
         + `<${tagName} ${attr}>`
