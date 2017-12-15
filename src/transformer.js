@@ -9,18 +9,6 @@
 let isTHead = false;
 
 /**
- * transform the thead tag
- *
- * @param {Object} node markdown ast of thead
- * @return {Object} markdown 数据格式化后的 json node
- */
-function transformTHead(node) {
-    const transformedNode = transformer(node);
-    isTHead = false;
-    return transformedNode;
-}
-
-/**
  * markdown data to json transformer
  *
  * @param {Object} node markdown ast
@@ -133,6 +121,18 @@ function transformer(node) {
         default:
             return node;
     }
+}
+
+/**
+ * transform the thead tag
+ *
+ * @param {Object} node markdown ast of thead
+ * @return {Object} markdown 数据格式化后的 json node
+ */
+function transformTHead(node) {
+    const transformedNode = transformer(node);
+    isTHead = false;
+    return transformedNode;
 }
 
 module.exports = transformer;
