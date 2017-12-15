@@ -76,8 +76,25 @@ class Node {
  * json to html
  *
  * @param {Object} node markdown-json node
+ * @param {Array} converters markdown-json node tramsform functions
  * @return {string} html format string
  */
 ```
+
+`converters` is an array of function, the function's arguments as follows:
+
+```js
+/**
+ * sample converter
+ *
+ * @param {Object} node markdown-json node
+ * @return {Object} transformed markdown-json node, this will pass to next converter
+ */
+function sampleConverter(node) {
+    // do something here.
+}
+```
+
+You can find a sample converter in [test](./test/test.js) file. The converter using prismjs highlight the code area of node.
 
 Thanks to [mark-twain](https://github.com/benjycui/mark-twain).
