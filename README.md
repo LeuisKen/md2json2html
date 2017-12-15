@@ -15,7 +15,7 @@ npm i md2json2html
 
 ### Example:
 
-See the [test](./test/test.js) file.
+See the [test](./test/index.test.js) file.
 
 ```js
 const fs = require('fs');
@@ -95,6 +95,6 @@ function sampleConverter(node) {
 }
 ```
 
-You can find a sample converter in [test](./test/test.js) file. The converter using prismjs highlight the code area of node.
+You can find a sample converter in [test](./test/index.test.js) file. The converter using prismjs highlight the code area of node.
 
 Thanks to [mark-twain](https://github.com/benjycui/mark-twain).
