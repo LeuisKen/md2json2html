@@ -10,9 +10,11 @@ const assert = require('assert');
 const fs = require('fs');
 const {markdown2json, json2html} = require('../src');
 
+// 预期结果
 const expectJsonRes = require('./test.json');
 const expectHtmlRes = fs.readFileSync(__dirname + '/test.html', 'utf8');
 
+// 程序执行结果
 const data = fs.readFileSync(__dirname + '/test.md', 'utf8');
 const jsonRes = markdown2json(data);
 const htmlRes = json2html(expectJsonRes.content);
