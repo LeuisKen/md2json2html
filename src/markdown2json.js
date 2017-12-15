@@ -6,10 +6,10 @@
 
 'use strict';
 
-const YMF = require('yaml-front-matter');
+const jsYaml = require('js-yaml');
 const remark = require('remark');
 
-const transformer = require('./transformer');
+const mdParser = require('./markdown-parser');
 
 /**
  * markdown to json
@@ -18,18 +18,33 @@ const transformer = require('./transformer');
  * @return {Object} json object that contents yaml format meta and markdown-json node
  */
 function markdown2json(markdownData) {
+    // 拆分数据
+    const {yaml, md} = groupDataString(markdownData);
     // 解析 yaml 头，作为 json 的 meta 字段
-    let meta = YMF.loadFront(markdownData);
+    const meta = jsYaml.load(yaml);
     // 解析 markdown 数据为 ast
-    let ast = remark().parse(meta.__content);
+    const ast = remark().parse(md);
     // 解析 markdown ast
-    let content = transformer(ast);
-    // 删去多余的 markdown 源
-    delete meta.__content;
+    const content = mdParser(ast);
 
     return {
-        meta: meta,         // yaml 头信息
-        content: content    // 格式化成 json 格式的 markdown 数据
+        meta,           // yaml 头信息
+        content         // 格式化成 json 格式的 markdown 数据
+    };
+}
+
+/**
+ * group data string as yaml and markdown
+ *
+ * @param {string} str input data string
+ * @return {Object} grouped yaml and markdown data string
+ */
+function groupDataString(str) {
+    const re = /^(-{3}(?:\n|\r)([\w\W]+?)(?:\n|\r)-{3})?([\w\W]*)*/;
+    const results = re.exec(str);
+    return {
+        yaml: results[2] ? results[2] : '',
+        md: results[3] ? results[3] : ''
     };
 }
 
