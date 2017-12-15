@@ -20,7 +20,7 @@ const expectHighlighedHtmlRes = fs.readFileSync(__dirname + '/test-hl.html', 'ut
 const data = fs.readFileSync(__dirname + '/test.md', 'utf8');
 const jsonRes = markdown2json(data);
 
-describe('mardown to json test', () => {
+describe('markdown to json test', () => {
     it('should process YAML as meta data', () => {
         assert.strictEqual(
             JSON.stringify(jsonRes.meta),
