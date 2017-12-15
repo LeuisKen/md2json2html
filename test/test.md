@@ -1,5 +1,6 @@
 ---
-title: 测试用markdown文件
+title: test
+description: a sample Markdown for test
 ---
 ## 二级标题
 

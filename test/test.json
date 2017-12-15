@@ -1,0 +1,247 @@
+{
+    "meta": {
+        "title": "test",
+        "description": "a sample Markdown for test"
+    },
+    "content": {
+        "article": {
+            "children": [
+                {
+                    "h2": {
+                        "children": [
+                            "二级标题"
+                        ]
+                    }
+                },
+                {
+                    "p": {
+                        "children": [
+                            "带",
+                            {
+                                "a": {
+                                    "attr": {
+                                        "title": null,
+                                        "href": "https://www.baidu.com/"
+                                    },
+                                    "children": [
+                                        "链接"
+                                    ]
+                                }
+                            },
+                            "的文本节点。"
+                        ]
+                    }
+                },
+                {
+                    "p": {
+                        "children": [
+                            {
+                                "img": {
+                                    "attr": {
+                                        "title": null,
+                                        "src": "https://avatars1.githubusercontent.com/u/7701575",
+                                        "alt": "测试图片"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "h3": {
+                        "children": [
+                            "三级标题"
+                        ]
+                    }
+                },
+                {
+                    "p": {
+                        "children": [
+                            {
+                                "em": {
+                                    "children": [
+                                        "代码区域"
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "pre": {
+                        "attr": {
+                            "lang": "js"
+                        },
+                        "children": {
+                            "code": {
+                                "children": "console.log('Hello World!');"
+                            }
+                        }
+                    }
+                },
+                {
+                    "p": {
+                        "children": [
+                            {
+                                "strong": {
+                                    "children": [
+                                        "列表区域"
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "ul": {
+                        "children": [
+                            {
+                                "li": {
+                                    "children": [
+                                        {
+                                            "p": {
+                                                "children": [
+                                                    "无序表"
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "ol": {
+                        "children": [
+                            {
+                                "li": {
+                                    "children": [
+                                        {
+                                            "p": {
+                                                "children": [
+                                                    "有序表"
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "blockquote": {
+                        "children": [
+                            {
+                                "p": {
+                                    "children": [
+                                        "引用区域"
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "table": {
+                        "children": [
+                            {
+                                "thead": {
+                                    "children": {
+                                        "tr": {
+                                            "children": [
+                                                {
+                                                    "th": {
+                                                        "children": [
+                                                            "名称"
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "th": {
+                                                        "children": [
+                                                            "类型"
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "th": {
+                                                        "children": [
+                                                            "必须"
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "th": {
+                                                        "children": [
+                                                            "默认值"
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "th": {
+                                                        "children": [
+                                                            "描述"
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "tbody": {
+                                    "children": [
+                                        {
+                                            "tr": {
+                                                "children": [
+                                                    {
+                                                        "td": {
+                                                            "children": [
+                                                                "title"
+                                                            ]
+                                                        }
+                                                    },
+                                                    {
+                                                        "td": {
+                                                            "children": [
+                                                                "string"
+                                                            ]
+                                                        }
+                                                    },
+                                                    {
+                                                        "td": {
+                                                            "children": [
+                                                                "true"
+                                                            ]
+                                                        }
+                                                    },
+                                                    {
+                                                        "td": {
+                                                            "children": [
+                                                                "无"
+                                                            ]
+                                                        }
+                                                    },
+                                                    {
+                                                        "td": {
+                                                            "children": [
+                                                                "标题"
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}
