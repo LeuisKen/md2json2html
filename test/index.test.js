@@ -17,7 +17,6 @@ const expectHtmlRes = fs.readFileSync(__dirname + '/test.html', 'utf8');
 // 程序执行结果
 const data = fs.readFileSync(__dirname + '/test.md', 'utf8');
 const jsonRes = markdown2json(data);
-const htmlRes = json2html(expectJsonRes.content);
 
 describe('mardown to json test', () => {
     it('should process YAML as meta data', () => {
@@ -37,7 +36,7 @@ describe('mardown to json test', () => {
 describe('json to html test', () => {
     it('should transform json to html string', () => {
         assert.strictEqual(
-            htmlRes,
+            json2html(expectJsonRes.content),
             expectHtmlRes
         );
     });

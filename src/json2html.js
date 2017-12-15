@@ -13,29 +13,53 @@
  * @return {string} html format string
  */
 function json2html(node) {
-    return toHTML(node);
+    return walk(node, toHTML);
+}
+
+/**
+ * walk
+ *
+ * @desc 用于递归遍历节点，并执行节点处理函数 func
+ * @param {Object} node markdown-json node
+ * @param {Function} func 节点处理函数
+ * @return {any} transformed node
+ */
+function walk(node, func) {
+
+    // Multiple children
+    if (Array.isArray(node)) {
+        return node.map(el => walk(el, func));
+    }
+
+    if (node == null || typeof node === 'string') {
+        node = func(node);
+        return node;
+    }
+
+    const tagName = Object.keys(node)[0];
+    const childrenNode = walk(node[tagName].children, func);
+    node[tagName].children = childrenNode;
+
+    node = func(node);
+
+    return node;
 }
 
 /**
  * to html
  *
- * @desc 用于递归调用遍历 node 树
+ * @desc transform markdown-json node to html format string
  * @param {Object} node markdown-json node
  * @return {string} html format string
  */
 function toHTML(node) {
     if (node == null) {
-        return;
+        return '';
     }
 
     // text node
     if (typeof node === 'string') {
         return node;
-    }
-
-    // Multiple children
-    if (Array.isArray(node)) {
-        return node.map(toHTML).join('');
     }
 
     const tagName = Object.keys(node)[0];
@@ -46,11 +70,16 @@ function toHTML(node) {
         return `<${tagName}${attr}/>`;
     }
 
-    const transformedChildren = toHTML(node[tagName].children);
+    const transformedChildren = (() => {
+        if (Array.isArray(node[tagName].children)) {
+            return node[tagName].children.join('');
+        }
+        return node[tagName].children;
+    })();
 
     return ''
         + `<${tagName}${attr}>`
-            + `${transformedChildren}`
+            + transformedChildren
         + `</${tagName}>`;
 }
 
