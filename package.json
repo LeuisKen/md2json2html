@@ -1,6 +1,6 @@
 {
   "name": "md2json2html",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "A npm package that transform markdown data to json and html.",
   "main": "./src/index.js",
   "files": [
