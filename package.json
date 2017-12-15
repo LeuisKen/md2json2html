@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/LeuisKen/md2json2html#readme",
   "dependencies": {
-    "remark": "^8.0.0",
-    "yaml-front-matter": "^3.4.0"
+    "js-yaml": "^3.10.0",
+    "remark": "^8.0.0"
   }
 }
