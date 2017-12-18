@@ -7,7 +7,7 @@
     "src"
   ],
   "scripts": {
-    "test": "mocha"
+    "test": "istanbul cover _mocha"
   },
   "repository": {
     "type": "git",
@@ -35,6 +35,7 @@
     "remark": "^8.0.0"
   },
   "devDependencies": {
+    "istanbul": "^0.4.5",
     "lodash": "^4.17.4",
     "mocha": "^4.0.1",
     "node-prismjs": "^0.1.1"
