@@ -52,22 +52,22 @@ Note: the markdown-json node is defined as following:
 ```js
 class Node {
     constructor(tagName, attr, children) {
-        this.tagName = {
-            attr,
-            children
-        }
+        this.tagName = tagName;
+        this.attr = attr;
+        this.children = children;
     }
 }
 // example:
 // Node {
-//     ul: {
-//         attr: {
-//             // key-value pairs for ul
-//         },
-//         children: Node or Array of Node
-//     }
+//     tagName: 'ul',
+//     attr: {
+//         // key-value pairs for ul
+//     },
+//     children: Node or Array of Node
 // }
 ```
+
+See also [test.json](./test/test.json).
 
 ### json2html
 

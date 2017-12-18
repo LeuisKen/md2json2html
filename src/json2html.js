@@ -39,9 +39,7 @@ function walk(node, func) {
         return node;
     }
 
-    const tagName = Object.keys(node)[0];
-    const childrenNode = walk(node[tagName].children, func);
-    node[tagName].children = childrenNode;
+    node.children = walk(node.children, func);
 
     node = func(node);
 
@@ -65,8 +63,8 @@ function toHTML(node) {
         return node;
     }
 
-    const tagName = Object.keys(node)[0];
-    const attr = transformAttr(node[tagName].attr);
+    const tagName = node.tagName;
+    const attr = transformAttr(node.attr);
 
     // void element don't have children
     if (isVoidElement(tagName)) {
@@ -74,10 +72,10 @@ function toHTML(node) {
     }
 
     const transformedChildren = (() => {
-        if (Array.isArray(node[tagName].children)) {
-            return node[tagName].children.join('');
+        if (Array.isArray(node.children)) {
+            return node.children.join('');
         }
-        return node[tagName].children;
+        return node.children;
     })();
 
     return ''

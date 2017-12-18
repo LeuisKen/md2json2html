@@ -64,15 +64,15 @@ function hlConverter(node) {
         return node;
     }
     // Just transform the pre tag.
-    const tagName = Object.keys(node)[0];
+    const tagName = node.tagName;
     if (tagName !== 'pre') {
         return node;
     }
     // highlight code using prismjs
-    const lang = node[tagName].attr.lang;
-    const code = node[tagName].children.code.children;
+    const lang = node.attr.lang;
+    const code = node.children.children;
     const language = Prism.languages[lang] || Prism.languages.autoit;
-    node[tagName].children.code.children = Prism.highlight(code, language);
+    node.children.children = Prism.highlight(code, language);
 
     return node;
 }

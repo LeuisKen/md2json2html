@@ -21,7 +21,9 @@ function transformer(node) {
 
     // Multiple children
     if (Array.isArray(node)) {
-        return node.map(transformer);
+        return node.length > 1
+            ? node.map(transformer)
+            : transformer(node[0]);
     }
 
     const transformedChildren = node.type === 'table'
@@ -29,10 +31,9 @@ function transformer(node) {
         : transformer(node.children);
 
     // 快速生成符合格式要求的 json node
-    const structure = (type, children = transformedChildren) => ({
-        [type]: {
-            children
-        }
+    const structure = (tagName, children = transformedChildren) => ({
+        tagName,
+        children
     });
 
     // transform according to node type
@@ -51,41 +52,33 @@ function transformer(node) {
             return structure('p');
         case 'link':
             return {
-                a: {
-                    attr: {
-                        title: node.title,
-                        href: node.url
-                    },
-                    children: transformedChildren
-                }
+                tagName: 'a',
+                attr: {
+                    title: node.title,
+                    href: node.url
+                },
+                children: transformedChildren
             };
         case 'image':
             return {
-                img: {
-                    attr: {
-                        title: node.title,
-                        src: node.url,
-                        alt: node.alt
-                    }
+                tagName: 'img',
+                attr: {
+                    title: node.title,
+                    src: node.url,
+                    alt: node.alt
                 }
             };
         case 'table':
             isTHead = true;
             return {
-                table: {
-                    children: [
-                        {
-                            thead: {
-                                children: transformTHead(node.children[0])
-                            }
-                        },
-                        {
-                            tbody: {
-                                children: transformedChildren
-                            }
-                        }
-                    ]
-                }
+                tagName: 'table',
+                children: [
+                    {
+                        tagName: 'thead',
+                        children: transformTHead(node.children[0])
+                    },
+                    structure('tbody')
+                ]
             };
         case 'tableRow':
             return structure('tr');
@@ -99,15 +92,13 @@ function transformer(node) {
             return structure('code');
         case 'code':
             return {
-                pre: {
-                    attr: {
-                        lang: node.lang
-                    },
-                    children: {
-                        code: {
-                            children: node.value
-                        }
-                    }
+                tagName: 'pre',
+                attr: {
+                    lang: node.lang
+                },
+                children: {
+                    tagName: 'code',
+                    children: node.value
                 }
             };
         case 'blockquote':
